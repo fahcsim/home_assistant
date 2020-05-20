@@ -1,0 +1,23 @@
+- alias: Kitchen Motion on Cloudy Day
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.kitchen_lights
+  condition:
+    condition: and
+    conditions:
+      - condition: numeric_state
+        entity_id: sensor.owm_cloud_coverage
+        above: 20
+      - condition: or
+        conditions:
+          - condition: sun
+            after: sunset
+            after_offset: '-04:40:00'
+          - condition: sun  
+            before: sunrise
+            before_offset: '06:25:00'
+      

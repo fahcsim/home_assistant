@@ -1,0 +1,19 @@
+- alias: Turn on Garage lights when there is movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.garage_wyze
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: group.garage
+
+- alias: Turn off garage lights 7 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.garage_wyze
+    to: 'off'
+    for:
+      minutes: 7
+  action:
+    service: switch.turn_off
+    entity_id: group.garage

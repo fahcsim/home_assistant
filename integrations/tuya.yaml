@@ -1,0 +1,4 @@
+#tuya:
+#  username: !secret email
+#  password: !secret tuya
+#  country_code: !secret country_code

@@ -1,0 +1,68 @@
+  - platform: mqtt
+    name: "Dining Room"
+    state_topic: "house/interior/basement/output/Dining_Room"
+    command_topic: "house/interior/basement/output/Dining_Room/set"
+    payload_on: "OFF"
+    payload_off: "ON"
+    state_on: "OFF"
+    state_off: "ON"
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: mqtt
+    name: "Headboard"
+    state_topic: "house/interior/basement/output/Headboard"
+    command_topic: "house/interior/basement/output/Headboard/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: mqtt
+    name: "Headboard_RGB"
+    state_topic: "house/interior/basement/output/Headboard_RGB"
+    command_topic: "house/interior/basement/output/Headboard_RGB/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: mqtt
+    name: "Spare Bedroom Lights"
+    state_topic: "house/interior/spare_bed/output/Spare_Bedroom_Lights"
+    command_topic: "house/interior/spare_bed/output/Spare_Bedroom_Lights/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: template
+    switches:
+      kitchen_lights:
+        value_template: "{{ is_state('switch.kitchen_real', 'off') }}" # fake switch is on when kitchen  lights switch reports off, and vice versa
+        turn_on:
+          service: switch.turn_off
+          data:
+            entity_id: switch.kitchen_real
+        turn_off:
+          service: switch.turn_on
+          data:
+            entity_id: switch.kitchen_real
+
+
+      front_exterior:
+         value_template: "{{ is_state('switch.front_door_real', 'off') }}" # fake switch is on when garage lights switch reports off, and vice versa
+         turn_on:
+           service: switch.turn_off
+           data:
+             entity_id: switch.front_door_real
+         turn_off:
+           service: switch.turn_on
+           data:
+             entity_id: switch.front_door_real

@@ -1,0 +1,36 @@
+- alias: Swamp Cooler Humidity Check 80 degrees
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.owm_humidity
+      above: 70
+  action:
+    service: climate.turn_off
+    entity_id: climate.swamp_cooler
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.owm_temperature
+      above: 80
+- alias: Swamp Cooler Humidity Check 90 degrees
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.owm_humidity
+      above: 60
+  action:
+    service: climate.turn_off
+    entity_id: climate.swamp_cooler
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.owm_temperature
+      above: 90
+- alias: Swamp Cooler Humidity Check 100 degrees
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.owm_humidity
+      above: 50
+  action:
+    service: climate.turn_off
+    entity_id: climate.swamp_cooler
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.owm_temperature
+      above: 100

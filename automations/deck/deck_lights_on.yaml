@@ -1,0 +1,15 @@
+- alias: Deck Lights
+  trigger:
+    platform: state
+    entity_id: binary_sensor.slider_contact
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: group.deck
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: sun  
+        before: sunrise

@@ -1,0 +1,5 @@
+mikrotik:
+  - name: Mikrotik
+    host: 10.0.0.1
+    username: homeassistant
+    password: !secret mikrotik_password

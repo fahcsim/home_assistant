@@ -1,0 +1,8 @@
+  - platform: openweathermap
+    api_key: f8abbf5523d30c3fcd8af65f0ff57f19
+    monitored_conditions:
+      - weather
+      - clouds
+      - rain
+      - humidity
+      - temperature

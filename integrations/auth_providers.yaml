@@ -1,0 +1,8 @@
+homeassistant:
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - !secret trusted_ip1
+      allow_bypass_login: true
+      trusted_users:
+        !secret trusted_ip1: !secret trusted_user1  

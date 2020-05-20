@@ -1,0 +1,20 @@
+
+- alias: Turn on laundry room light when there is movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.laundry_room_motion
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.laundry_room_lights
+
+- alias: Turn off laundry room light 3 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.laundry_room_motion
+    to: 'off'
+    for:
+      minutes: 3
+  action:
+    service: switch.turn_off
+    entity_id: switch.laundry_room_lights

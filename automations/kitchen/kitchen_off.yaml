@@ -1,0 +1,10 @@
+- alias: Kitchen Lights Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'off'
+    for:
+      minutes: 7
+  action:
+    service: switch.turn_off
+    entity_id: switch.kitchen_lights

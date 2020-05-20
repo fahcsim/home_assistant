@@ -1,0 +1,12 @@
+  - id: Sync Tasmota state
+    alias: Sync Entry Tasmota state
+    initial_state: true
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+    # sync state for autodiscovery devices
+    - service: mqtt.publish
+      data:
+        topic: entry_tasmota/cmnd/state
+        payload: ''

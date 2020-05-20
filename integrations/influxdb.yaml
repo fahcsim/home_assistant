@@ -1,0 +1,6 @@
+influxdb:
+  host: !secret telegrafIP
+  port: 8086
+  database: !secret telegrafdb
+  username: !secret telegrafuser
+  password: !secret telegraf

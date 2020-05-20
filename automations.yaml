@@ -1,0 +1,153 @@
+- id: '1585194509557'
+  alias: Master Bedroom Motion Button - ON
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.sb_tasmota_switch4
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: automation.master_bed_motion_on
+    service: automation.turn_on
+  - data: {}
+    entity_id: switch.headboard
+    service: switch.turn_on
+- id: '1585522327775'
+  alias: Desk Front Door Alert - ON
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.front_door
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.desk_red
+    service: switch.turn_on
+- id: '1585522382964'
+  alias: Desk Front Door Alert - OFF
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.front_door
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.desk_red
+    service: switch.turn_off
+- id: '1585522474628'
+  alias: Slider Alert - ON
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.slider_contact
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.desk_red
+    service: switch.turn_on
+- id: '1585522513326'
+  alias: Slider Alert - OFF
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.slider_contact
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.desk_red
+    service: switch.turn_off
+- id: '1585524095815'
+  alias: Master Bed Motion - ON
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.master_bed_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.headboard
+    service: switch.turn_on
+- id: '1585524326587'
+  alias: Master Bed Motion Button - OFF
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.sb_tasmota_switch4
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: automation.master_bed_motion_on
+    service: automation.turn_off
+  - data: {}
+    entity_id: switch.headboard
+    service: switch.turn_off
+- id: '1585587873514'
+  alias: Master Bedroom Motion - OFF
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.master_bed_motion
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.headboard
+    service: switch.turn_off
+- id: '1586048101341'
+  alias: Basement Water Alert
+  description: ''
+  trigger:
+  - payload: WATER_DETECTED
+    platform: mqtt
+    topic: garage/water
+  condition: []
+  action:
+  - data:
+      data:
+        priority: 1
+      message: Water Detected in Basement
+      title: WATER ALERT
+    service: notify.basement_water
+- id: '1586111923493'
+  alias: All Off
+  description: ''
+  trigger:
+  - payload: 'ON'
+    platform: mqtt
+    topic: lr/right_long
+  condition: []
+  action:
+  - data: {}
+    entity_id: group.all_lights
+    service: switch.turn_off
+- id: '1587568748930'
+  alias: Tasmota Restart Test
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      payload: 1
+      topic: cmnd/entry_tasmota/restart
+    service: mqtt.publish
+- id: '1587935271581'
+  alias: Restart Home Assistant at 2 AM
+  description: ''
+  trigger:
+  - at: 02:00:00
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    service: homeassistant.restart

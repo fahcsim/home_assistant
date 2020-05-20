@@ -1,0 +1,39 @@
+group: 
+  Deck:
+    name: Deck
+    entities:
+      - switch.deck_lights
+      - switch.deck_lights2
+      - switch.garage_exterior_lights
+  Garage:    
+    name: Garage
+    entities:
+      - switch.garage_lights
+      - switch.garage_shelf_light
+      - switch.garage_hall_lights
+      - switch.rack_lights
+
+
+  All_Lights:    
+    name: All Lights
+    entities:
+      - switch.garage_lights
+      - switch.garage_shelf_light
+      - switch.garage_hall_lights
+      - switch.rack_lights
+      - switch.deck_lights
+      - switch.deck_lights2
+      - switch.garage_exterior_lights
+      - switch.basement_lights
+      - switch.box_light
+      - switch.dining_room
+      - switch.entry_lights
+      - switch.headboard
+      - switch.headboard_rgb
+      - switch.kitchen_lights
+      - switch.living_room_lights
+      - switch.living_room_fan
+      - switch.living_room_lamp
+      - switch.master_bedroom
+      - switch.spare_bedroom
+

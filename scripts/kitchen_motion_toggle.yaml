@@ -1,0 +1,9 @@
+kitchen_motion:
+  'kitchen_motion_toggle':
+    alias: Kitchen Motion - Toggle
+    sequence:
+    - data:
+        payload: toggle
+        retain: true
+        topic: node/kitchen
+      service: mqtt.publish  

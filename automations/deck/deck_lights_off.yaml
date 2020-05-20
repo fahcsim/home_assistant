@@ -1,0 +1,10 @@
+- alias: Deck Lights Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.slider_contact
+    to: 'off'
+    for:
+      minutes: 7
+  action:
+    service: switch.turn_off
+    entity_id: group.deck

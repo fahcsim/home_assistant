@@ -1,0 +1,32 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# kept this so that the GUI editor works, per Frenck's trick in the DrZZs hass config spliting video
+automation: !include automations.yaml
+
+# put new automations here
+automation dir: !include_dir_merge_list automations
+
+
+script: !include scripts.yaml
+# there is a known bug with splitting the scripts config, leaving this here for future use when it hopefully gets fixed
+# the bug can be found hereL: https://github.com/home-assistant/core/issues/15628
+script split: !include_dir_merge_named scripts
+
+scene: !include scenes.yaml
+
+homeassistant:
+  #load packages
+  packages: !include_dir_named integrations
+
+binary_sensor: !include_dir_merge_list binary_sensor
+
+sensor: !include_dir_merge_list sensors
+
+switch: !include_dir_merge_list switches
+
+camera: !include_dir_merge_list cameras
+
+
+
+    

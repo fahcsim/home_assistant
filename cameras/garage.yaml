@@ -1,0 +1,4 @@
+  - platform: generic
+    name: Garage
+    still_image_url: http://192.168.5.4/cgi-bin/api.cgi?cmd=Snap&channel=0&rs=dfgret5t45&user=admin&password=C@m3rastream
+    stream_source: rtmp://192.168.5.4/bcs/channel0_main.bcs?token=254&channel=0&stream=0&user=admin&password=C@m3rastream

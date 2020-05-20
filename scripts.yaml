@@ -1,0 +1,41 @@
+# Living Room
+'1587058484239':
+  alias: Living Room Motion - Toggle
+  sequence:
+  - data:
+      payload: toggle
+      retain: true
+      topic: node/living_room
+    service: mqtt.publish
+  - data: {}
+    entity_id: switch.living_room_lamp
+    service: switch.toggle
+  - delay: 00:05:00
+  - data: {}
+    entity_id: switch.living_room_lamp
+    service: switch.turn_off
+
+# Dining Room
+dining_motion_toggle:
+  alias: Dining Room Motion - Toggle
+  sequence:
+  - data:
+      payload: toggle
+      retain: true
+      topic: node/dining_room
+    service: mqtt.publish
+  - data: {}
+    entity_id: switch.dining_room
+    service: switch.toggle
+  - delay: 00:05:00
+  - data: {}
+    entity_id: switch.dining_room
+    service: switch.turn_off
+
+# Kitchen
+kitchen_toggle:
+  alias: Kitchen Lights - Toggle
+  sequence:
+  - data: {}
+    entity_id: switch.kitchen_lights
+    service: switch.turn_off

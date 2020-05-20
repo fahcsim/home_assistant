@@ -1,0 +1,5 @@
+panel_iframe:
+  shinobi:
+    title: 'Shinobi'
+    url: 'http://192.168.5.253:8080/'
+    icon: mdi:cctv

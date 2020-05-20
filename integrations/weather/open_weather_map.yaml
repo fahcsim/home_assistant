@@ -1,0 +1,3 @@
+#weather:
+# - platform: openweathermap
+#    api_key: f8abbf5523d30c3fcd8af65f0ff57f19

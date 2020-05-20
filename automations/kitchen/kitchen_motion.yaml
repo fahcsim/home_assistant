@@ -1,0 +1,18 @@
+- alias: Kitchen Motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.kitchen_lights
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: '-00:40:00'
+      - condition: sun  
+        before: sunrise
+        before_offset: '01:25:00'
+      

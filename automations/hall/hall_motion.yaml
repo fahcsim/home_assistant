@@ -1,0 +1,20 @@
+
+- alias: Hall Motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hall_motion
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.hall_lights
+
+- alias: Hall Light Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hall_motion
+    to: 'off'
+    for:
+      minutes: 3
+  action:
+    service: switch.turn_off
+    entity_id: switch.hall_lights
