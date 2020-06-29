@@ -1,4 +1,5 @@
-#tuya:
-#  username: !secret email
-#  password: !secret tuya
-#  country_code: !secret country_code
+tuya:
+  username: !secret email
+  password: !secret smart_life_pass
+  country_code: !secret country_code
+  platform: smart_life

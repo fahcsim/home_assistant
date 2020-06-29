@@ -11,7 +11,7 @@
     entity_id: automation.master_bed_motion_on
     service: automation.turn_on
   - data: {}
-    entity_id: switch.headboard
+    entity_id: switch.headboard_led
     service: switch.turn_on
 - id: '1585522327775'
   alias: Desk Front Door Alert - ON
@@ -72,7 +72,7 @@
   condition: []
   action:
   - data: {}
-    entity_id: switch.headboard
+    entity_id: switch.headboard_led
     service: switch.turn_on
 - id: '1585524326587'
   alias: Master Bed Motion Button - OFF
@@ -87,7 +87,7 @@
     entity_id: automation.master_bed_motion_on
     service: automation.turn_off
   - data: {}
-    entity_id: switch.headboard
+    entity_id: switch.headboard_led
     service: switch.turn_off
 - id: '1585587873514'
   alias: Master Bedroom Motion - OFF
@@ -100,7 +100,7 @@
   condition: []
   action:
   - data: {}
-    entity_id: switch.headboard
+    entity_id: switch.headboard_led
     service: switch.turn_off
 - id: '1586048101341'
   alias: Basement Water Alert
@@ -151,3 +151,15 @@
   action:
   - data: {}
     service: homeassistant.restart
+- id: '1590464389980'
+  alias: Turn on Master Bed Motion at Sunset
+  description: ''
+  trigger:
+  - event: sunset
+    offset: -00:40:00
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    entity_id: automation.master_bed_motion_on
+    service: automation.turn_on

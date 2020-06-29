@@ -1,18 +1,7 @@
   - platform: mqtt
     name: "Dining Room"
-    state_topic: "house/interior/basement/output/Dining_Room"
-    command_topic: "house/interior/basement/output/Dining_Room/set"
-    payload_on: "OFF"
-    payload_off: "ON"
-    state_on: "OFF"
-    state_off: "ON"
-    optimistic: false
-    qos: 0
-    retain: true
-  - platform: mqtt
-    name: "Headboard"
-    state_topic: "house/interior/basement/output/Headboard"
-    command_topic: "house/interior/basement/output/Headboard/set"
+    state_topic: "stat/garage_tas2/POWER3"
+    command_topic: "cmnd/garage_tas2/POWER3"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -20,17 +9,7 @@
     optimistic: false
     qos: 0
     retain: true
-  - platform: mqtt
-    name: "Headboard_RGB"
-    state_topic: "house/interior/basement/output/Headboard_RGB"
-    command_topic: "house/interior/basement/output/Headboard_RGB/set"
-    payload_on: "ON"
-    payload_off: "OFF"
-    state_on: "ON"
-    state_off: "OFF"
-    optimistic: false
-    qos: 0
-    retain: true
+
   - platform: mqtt
     name: "Spare Bedroom Lights"
     state_topic: "house/interior/spare_bed/output/Spare_Bedroom_Lights"
