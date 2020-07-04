@@ -3,8 +3,8 @@
 
   - platform: mqtt
     name: "Basement Lights"
-    state_topic: "house/interior/basement/output/Basement_Lights"
-    command_topic: "house/interior/basement/output/Basement_Lights/set"
+    state_topic: "garage_tasmota/stat/POWER1"
+    command_topic: "garage_tasmota/cmnd/POWER1"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -15,10 +15,12 @@
     unique_id: 02505306-77b4-11ea-bc55-0242ac130003
 
 
+
+
   - platform: mqtt
     name: "Rack Lights"
-    state_topic: "house/interior/basement/output/Rack_Lights"
-    command_topic: "house/interior/basement/output/Rack_Lights/set"
+    state_topic: "garage_tasmota/stat/POWER2"
+    command_topic: "garage_tasmota/cmnd/POWER2"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -29,8 +31,8 @@
     unique_id: 0250550e-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Garage Exterior Lights"
-    state_topic: "house/interior/basement/output/Garage_Exterior_Lights"
-    command_topic: "house/interior/basement/output/Garage_Exterior_Lights/set"
+    state_topic: "garage_tasmota/stat/POWER3"
+    command_topic: "garage_tasmota/cmnd/POWER3"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -41,8 +43,8 @@
     unique_id: 02505ab8-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Bluetooth"
-    state_topic: "house/interior/basement/output/Bluetooth"
-    command_topic: "house/interior/basement/output/Bluetooth/set"
+    state_topic: "garage_tasmota/stat/POWER4"
+    command_topic: "garage_tasmota/cmnd/POWER4"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -53,8 +55,8 @@
     unique_id: 02505608-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Garage_Shelf Light"
-    state_topic: "house/interior/basement/output/Garage_Shelf_Light"
-    command_topic: "house/interior/basement/output/Garage_Shelf_Light/set"
+    state_topic: "garage_tasmota/stat/POWER5"
+    command_topic: "garage_tasmota/cmnd/POWER5"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -65,8 +67,8 @@
     unique_id: 025056e4-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Box Light"
-    state_topic: "house/interior/basement/output/Box_Light"
-    command_topic: "house/interior/basement/output/Box_Light/set"
+    state_topic: "garage_tasmota/stat/POWER6"
+    command_topic: "garage_tasmota/cmnd/POWER6"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -76,9 +78,9 @@
     retain: true
     unique_id: 025057b6-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
-    name: "GL Real"
-    state_topic: "house/interior/basement/output/Garage_Real"
-    command_topic: "house/interior/basement/output/Garage_Real/set"
+    name: "garage_lights"
+    state_topic: "stat/garage_tas2/POWER5"
+    command_topic: "cmnd/garage_tas2/POWER5"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -86,39 +88,17 @@
     optimistic: false
     qos: 0
     retain: true
-    unique_id: 0250587e-77b4-11ea-bc55-0242ac130003
+  
   - platform: mqtt
-    name: "GHL Real"
-    state_topic: "house/interior/basement/output/Garage_Hall_Real"
-    command_topic: "house/interior/basement/output/Garage_Hall_Real/set"
+    name: "garage_hall_lights"
+    state_topic: "stat/garage_tas2/POWER4"
+    command_topic: "cmnd/garage_tas2/POWER4"
     payload_on: "ON"
     payload_off: "OFF"
-    state_on: "ON"
+    state_on: "OFF"
     state_off: "OFF"
     optimistic: false
     qos: 0
     retain: true
-    unique_id: 025059f0-77b4-11ea-bc55-0242ac130003
+    
 
-  - platform: template
-    switches:
-      garage_lights:
-        value_template: "{{ is_state('switch.gl_real', 'off') }}" # fake switch is on when garage lights switch reports off, and vice versa
-        turn_on:
-          service: switch.turn_off
-          data:
-            entity_id: switch.gl_real
-        turn_off:
-          service: switch.turn_on
-          data:
-            entity_id: switch.gl_real
-      garage_hall_lights:
-        value_template: "{{ is_state('switch.ghl_real', 'off') }}" # fake switch is on when garage lights switch reports off, and vice versa
-        turn_on:
-          service: switch.turn_off
-          data:
-            entity_id: switch.ghl_real
-        turn_off:
-          service: switch.turn_on
-          data:
-            entity_id: switch.ghl_real
