@@ -3,6 +3,7 @@
 *.csr
 *.crt
 *.key
+*.db
 www
 OZW_Log.txt
 home-assistant.log
