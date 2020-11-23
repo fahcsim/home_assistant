@@ -1,4 +1,3 @@
-# Living Room
 '1587058484239':
   alias: Living Room Motion - Toggle
   sequence:
@@ -14,8 +13,6 @@
   - data: {}
     entity_id: switch.living_room_lamp
     service: switch.turn_off
-
-# Dining Room
 dining_motion_toggle:
   alias: Dining Room Motion - Toggle
   sequence:
@@ -31,11 +28,61 @@ dining_motion_toggle:
   - data: {}
     entity_id: switch.dining_room
     service: switch.turn_off
-
-# Kitchen
 kitchen_toggle:
   alias: Kitchen Lights - Toggle
   sequence:
   - data: {}
     entity_id: switch.kitchen_lights
     service: switch.turn_off
+living_room_sleep_mode:
+  alias: Living Room Sleep Mode - ON
+  mode: single
+  sequence:
+  - delay: 00:00:05
+  - data: {}
+    entity_id: automation.kitchen_motion
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.living_room_motion
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.dining_room_motion
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.kitchen_motion_on_cloudy_day
+    service: automation.turn_off
+  - data: {}
+    entity_id: automation.living_room_motion_on_cloudy_day
+    service: automation.turn_off
+  - data: {}
+    entity_id: switch.kitchen_lights
+    service: switch.turn_off
+  - data: {}
+    entity_id: switch.lr_lamp
+    service: switch.turn_off
+living_room_sleep_mode_off:
+  alias: Living Room Sleep Mode - OFF
+  mode: single
+  sequence:
+  - delay: 00:00:05
+  - data: {}
+    entity_id: automation.kitchen_motion
+    service: automation.turn_on
+  - data: {}
+    entity_id: automation.living_room_motion
+    service: automation.turn_on
+  - data: {}
+    entity_id: automation.dining_room_motion
+    service: automation.turn_on
+  - data: {}
+    entity_id: automation.kitchen_motion_on_cloudy_day
+    service: automation.turn_on
+  - data: {}
+    entity_id: automation.living_room_motion_on_cloudy_day
+    service: automation.turn_on
+  - data: {}
+    entity_id: switch.kitchen_lights
+    service: switch.turn_on
+  - data: {}
+    entity_id: switch.lr_lamp
+    service: switch.turn_on

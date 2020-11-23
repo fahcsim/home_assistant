@@ -1,0 +1,10 @@
+  trigger:
+    - platform: event
+      event_type: tag_scanned
+      event_data:
+        device_id: 2315bc8230f6c3a7
+        tag_id: e54b4cba-da3f-426d-9e9b-e9983f9644dc
+  action:
+    service: switch.toggle
+    entity_id: switch.kitchen_lights
+  

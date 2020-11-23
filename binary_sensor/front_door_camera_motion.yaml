@@ -1,0 +1,6 @@
+- platform: mqtt
+  name: "Front Door Motion"
+  device_class: motion
+  state_topic: "/blueiris/front_door"
+  payload_on: "on"
+  off_delay: 30

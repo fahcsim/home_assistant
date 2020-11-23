@@ -3,13 +3,13 @@ climate:
     name: Swamp Cooler
     heater: switch.swamp_cooler
     target_sensor:  sensor.tasmota_dht11_temperature
-    min_temp: 68
+    min_temp: 60
     max_temp: 73
     ac_mode: true
-    target_temp: 70
+    target_temp: 68
     cold_tolerance: 0.3
     hot_tolerance: 0
     min_cycle_duration:
-     minutes: 15
+     minutes: 120
     initial_hvac_mode: "cool"
     precision: 0.1

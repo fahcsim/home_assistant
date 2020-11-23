@@ -5,6 +5,11 @@
   - entity_id: binary_sensor.sb_tasmota_switch4
     platform: state
     to: 'on'
+  - event_data:
+      device_id: 2315bc8230f6c3a7
+      tag_id: 13a86bb6-9eea-4ab0-8b69-206b20860fd6
+    event_type: tag_scanned
+    platform: event
   condition: []
   action:
   - data: {}
@@ -13,6 +18,7 @@
   - data: {}
     entity_id: switch.headboard_led
     service: switch.turn_on
+  mode: single
 - id: '1585522327775'
   alias: Desk Front Door Alert - ON
   description: ''
@@ -81,6 +87,11 @@
   - entity_id: binary_sensor.sb_tasmota_switch4
     platform: state
     to: 'off'
+  - event_data:
+      device_id: 2315bc8230f6c3a7
+      tag_id: 13a86bb6-9eea-4ab0-8b69-206b20860fd6
+    event_type: tag_scanned
+    platform: event
   condition: []
   action:
   - data: {}
@@ -89,6 +100,7 @@
   - data: {}
     entity_id: switch.headboard_led
     service: switch.turn_off
+  mode: single
 - id: '1585587873514'
   alias: Master Bedroom Motion - OFF
   description: ''
@@ -163,3 +175,194 @@
   - data: {}
     entity_id: automation.master_bed_motion_on
     service: automation.turn_on
+- id: '1597798157048'
+  alias: Living Room Sleep Mode - Reboot
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - condition: state
+    entity_id: input_boolean.living_room_sleep_mode
+    state: 'on'
+  action:
+  - data: {}
+    service: script.living_room_sleep_mode
+  mode: single
+- id: '1597798458119'
+  alias: Living Room Mode Sleep Mode - Script Call
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.living_room_sleep_mode
+  condition: []
+  action:
+  - data: {}
+    service_template: "{% if is_state('input_boolean.living_room_sleep_mode', 'on')\
+      \ %}\n  script.living_room_sleep_mode\n{% else %}\n  script.living_room_sleep_mode_off\n\
+      {% endif %}\n"
+  mode: single
+- id: '1600569928975'
+  alias: test
+  description: ''
+  trigger:
+  - device_id: dcc10145fc2a475d91f9832b0eb9d0ef
+    domain: binary_sensor
+    entity_id: binary_sensor.spare_bed_motion_ias_zone
+    platform: device
+    type: motion
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.office_lights
+    service: switch.turn_on
+  mode: single
+- id: '1601230722653'
+  alias: Restart Tasmota Devices when HA Restarts
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - service: mqtt.publish
+    data:
+      topic: lr_lamp/cmnd/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: cmnd/garage_tasmota/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: cmnd/garage_tas_2/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: kitchen_tasmota/cmnd/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: swamp_tasmota/cmnd/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: laundry_switch/cmnd/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: entry_tasmota/cmnd/restart
+      payload: 1
+  - service: mqtt.publish
+    data:
+      topic: lr/cmnd/restart
+      payload: 1
+- id: '1601340222276'
+  alias: NFC Test
+  description: ''
+  trigger:
+  - event_data:
+      device_id: 2315bc8230f6c3a7
+      tag_id: 9fcd0af9-15d9-4f4a-ac24-6c8f29adcc37
+    event_type: tag_scanned
+    platform: event
+  condition: []
+  action:
+  - service: switch.turn_off
+    data:
+      entity_id:
+      - switch.dining_room
+      - switch.kitchen_lights
+      - switch.lr_lamp
+      - switch.headboard
+      - switch.headboard_rgb
+- id: '1601428161633'
+  alias: Restart Tasmota Devices with NFC Tag (spare bedroom monitor)
+  description: ''
+  trigger:
+  - event_data:
+      device_id: 2315bc8230f6c3a7
+      tag_id: f387ca8f-210e-4242-bb0d-8d01a4f4ef72
+    event_type: tag_scanned
+    platform: event
+  condition: []
+  action:
+  - data:
+      payload: 1
+      topic: tasmotas/cmnd/restart
+    service: mqtt.publish
+  mode: single
+- id: '1605954097405'
+  alias: Bedroom Fan - Weekdays ON
+  description: ''
+  trigger:
+  - platform: time
+    at: 07:00:00
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.bedroom_fan
+  mode: single
+- id: '1605954207447'
+  alias: Bedroom Fan Off
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:45:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.bedroom_fan
+  mode: single
+- id: '1605954272594'
+  alias: Bedroom Fan On - Weekends
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:30:00
+  condition:
+  - condition: time
+    weekday:
+    - sat
+    - sun
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.bedroom_fan
+  mode: single
+- id: '1605955259317'
+  alias: Headboard LED NFC Toggle
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 420edeea-940c-4df6-b825-18e9b6df8603
+  condition: []
+  action:
+  - service: automation.toggle
+    data: {}
+    entity_id: automation.master_bed_motion_on
+  - service: switch.toggle
+    data: {}
+    entity_id: switch.headboard_led
+  mode: single
+- id: '1605927550596'
+  alias: Tag Headboard - Mischa is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 11b38ba1-26bf-472d-81c1-0abe6cf8622f
+  condition: []
+  action:
+  - service: automation.trigger
+    data: {}
+    entity_id: automation.headboard_led_nfc_toggle
+  mode: single

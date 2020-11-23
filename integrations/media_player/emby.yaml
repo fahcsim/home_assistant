@@ -1,4 +1,4 @@
 media_player:
   - platform: emby
     host: 10.0.0.19
-    api_key: ab6c9d2bc48548738fef5fa2d6582b79
+    api_key: 0673fb958b4c49858482a3fa509dab35

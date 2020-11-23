@@ -5,7 +5,7 @@
     entity_id: binary_sensor.hall_motion
     to: 'on'
   action:
-    service: switch.turn_on
+    service: switch.turn_on # iverted due to issue with switch TEMPORARY until new one arrives | Fixed 10/13/2020
     entity_id: switch.hall_lights
 
 - alias: Hall Light Off
@@ -16,5 +16,7 @@
     for:
       minutes: 3
   action:
-    service: switch.turn_off
+    service: switch.turn_off # iverted due to issue with switch TEMPORARY until new one arrives | Fixed 10/13/2020
     entity_id: switch.hall_lights
+    
+    

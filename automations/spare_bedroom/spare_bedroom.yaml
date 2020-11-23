@@ -1,0 +1,21 @@
+
+- alias: Spare Bed Motion
+  trigger:
+    platform: state
+    entity_id: binary_sensor.spare_bed_motion_zigbee
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.office_lights
+
+- alias: Spare Bed Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.spare_bed_motion_zigbee
+    to: 'off'
+    for:
+      minutes: 3
+  action:
+    service: switch.turn_off
+    entity_id: switch.office_lights
+

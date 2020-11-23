@@ -1,0 +1,7 @@
+switch:
+  - platform: sonoff_lan_mode_r3
+    name: Office_Sonoff
+    device_id: 1000b53a74
+    #api_key: // [Required unless in DIY mode] api_key obtained during pairing or from V2 firmware trace
+    #icon: // [Optional] Custom icon for device
+    #outlet: // [Optional] Outlet number, numbered form 0 to 3 on a 4CH as opposed to 1-4 as in the eWeLink interface

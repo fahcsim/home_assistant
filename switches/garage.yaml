@@ -3,8 +3,8 @@
 
   - platform: mqtt
     name: "Basement Lights"
-    state_topic: "garage_tasmota/stat/POWER1"
-    command_topic: "garage_tasmota/cmnd/POWER1"
+    state_topic: "stat/garage_tasmota/POWER1"
+    command_topic: "cmnd/garage_tasmota/POWER1"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -19,8 +19,8 @@
 
   - platform: mqtt
     name: "Rack Lights"
-    state_topic: "garage_tasmota/stat/POWER2"
-    command_topic: "garage_tasmota/cmnd/POWER2"
+    state_topic: "stat/garage_tasmota/POWER2"
+    command_topic: "cmnd/garage_tasmota/POWER2"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -31,8 +31,8 @@
     unique_id: 0250550e-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Garage Exterior Lights"
-    state_topic: "garage_tasmota/stat/POWER3"
-    command_topic: "garage_tasmota/cmnd/POWER3"
+    state_topic: "stat/garage_tasmota/POWER3"
+    command_topic: "cmnd/garage_tasmota/POWER3"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -43,8 +43,8 @@
     unique_id: 02505ab8-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Bluetooth"
-    state_topic: "garage_tasmota/stat/POWER4"
-    command_topic: "garage_tasmota/cmnd/POWER4"
+    state_topic: "stat/garage_tasmota/POWER4"
+    command_topic: "cmnd/garage_tasmota/POWER4"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -55,8 +55,8 @@
     unique_id: 02505608-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Garage_Shelf Light"
-    state_topic: "garage_tasmota/stat/POWER5"
-    command_topic: "garage_tasmota/cmnd/POWER5"
+    state_topic: "stat/garage_tasmota/POWER5"
+    command_topic: "cmnd/garage_tasmota/POWER5"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -67,8 +67,8 @@
     unique_id: 025056e4-77b4-11ea-bc55-0242ac130003
   - platform: mqtt
     name: "Box Light"
-    state_topic: "garage_tasmota/stat/POWER6"
-    command_topic: "garage_tasmota/cmnd/POWER6"
+    state_topic: "stat/garage_tasmota/POWER6"
+    command_topic: "cmnd/garage_tasmota/POWER6"
     payload_on: "ON"
     payload_off: "OFF"
     state_on: "ON"
@@ -77,6 +77,30 @@
     qos: 0
     retain: true
     unique_id: 025057b6-77b4-11ea-bc55-0242ac130003
+
+  - platform: mqtt
+    name: "Headboard RGB LED"
+    state_topic: "stat/garage_tasmota/POWER7"
+    command_topic: "cmnd/garage_tasmota/POWER7"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true  
+  - platform: mqtt
+    name: "Headboard LED"
+    state_topic: "stat/garage_tasmota/POWER8"
+    command_topic: "cmnd/garage_tasmota/POWER8"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true  
+
   - platform: mqtt
     name: "garage_lights"
     state_topic: "stat/garage_tas2/POWER5"
