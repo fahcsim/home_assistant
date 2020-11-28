@@ -4,7 +4,10 @@
 *.crt
 *.key
 *.db
+motion_images
+gitupdate.sh
 www
+motion_images
 OZW_Log.txt
 home-assistant.log
 home-assistant_v2.db

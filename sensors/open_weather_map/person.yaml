@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    driveway_person_detected:
+      friendly_name: 'Driveway Person Detected'
+      value_template: >
+                      {% if state_attr('image_processing.doods_front_door_mjpeg', 'matches').get('person', [{'score': 0}])[0].score | float > 50|float %}
+                        true
+                      {% else %}
+                        false
+                      {% endif %}

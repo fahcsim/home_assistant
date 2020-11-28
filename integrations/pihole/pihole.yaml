@@ -1,0 +1,7 @@
+pi_hole:
+  - host: '10.0.0.110'
+    name: rpi-ansible
+    api_key: !secret pi_hole_api_key
+  - host: '10.0.0.12'
+    name: unraid
+    api_key: !secret pi_hole_api_key2

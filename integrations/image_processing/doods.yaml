@@ -1,0 +1,12 @@
+image_processing:
+  - platform: doods
+    url: "http://10.0.0.19:8089"
+    detector: default
+    confidence: 60
+    scan_interval: 3
+    source:
+      - entity_id: camera.front_door_mjpeg
+    labels:
+      - name: person
+      - name: car
+        confidence: 60

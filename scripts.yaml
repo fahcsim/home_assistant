@@ -86,3 +86,11 @@ living_room_sleep_mode_off:
   - data: {}
     entity_id: switch.lr_lamp
     service: switch.turn_on
+front_door_camera_snapshot:
+  alias: Front Door Camera Snapshot
+  sequence:
+  - service: camera.snapshot
+    data:
+      entity_id: camera.garage
+      filename: /tmp/front_door.jpg
+  mode: single

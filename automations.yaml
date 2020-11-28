@@ -297,7 +297,7 @@
   description: ''
   trigger:
   - platform: time
-    at: 07:00:00
+    at: 06:15:00
   condition:
   - condition: time
     weekday:
@@ -365,4 +365,38 @@
   - service: automation.trigger
     data: {}
     entity_id: automation.headboard_led_nfc_toggle
+  mode: single
+- id: '1606413700659'
+  alias: Camera Snap Test
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door
+    to: 'on'
+  condition: []
+  action:
+  - service: camera.snapshot
+    data:
+      entity_id: camera.garage
+      filename: /config/motion_images/front_door.jpg
+  mode: single
+- id: '1606588384008'
+  alias: Person Alert Test
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.driveway_person_detected
+    to: 'true'
+  condition: []
+  action:
+  - service: notify.mobile_app_pixel_3a
+    data:
+      message: Person Detected on Front Door Camera
+      title: Person Alert
+      data:
+        image: http://10.0.0.129:8123/api/camera_proxy/camera.front_door_mjpeg?token=3d36c2aa522f23e6fccc7a56a99952e0a6b739330da4196c8c6b3982406e8383
+  - service: camera.snapshot
+    data:
+      filename: /config/motion_images/front_door_latest_detection.jpg
+    entity_id: camera.front_door_mjpeg
   mode: single
