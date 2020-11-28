@@ -1,5 +1,5 @@
 panel_iframe:
   vs_code:
     title: 'Config Editor'
-    url: 'http://10.0.0.21:3218'
+    url: !secret configurator_url
     icon: mdi:code-braces-box

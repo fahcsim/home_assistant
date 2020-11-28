@@ -4,3 +4,5 @@
 #  database: !secret telegrafdb
 #  username: !secret telegrafuser
 #  password: !secret telegraf
+#
+#  Not currently using

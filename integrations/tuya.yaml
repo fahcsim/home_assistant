@@ -1,5 +1,7 @@
-tuya:
-  username: !secret email
-  password: !secret smart_life_pass
-  country_code: !secret country_code
-  platform: smart_life
+#tuya:
+# username: !secret email
+# password: !secret smart_life_pass
+# country_code: !secret country_code
+# platform: smart_life
+#
+# No longer use and yaml for this integration has been deprecated
